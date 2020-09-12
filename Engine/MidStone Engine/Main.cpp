@@ -2,7 +2,6 @@
 #include "Game.h"
 
 Game* game = nullptr;
-Game* game1 = nullptr;
 int main(int argc, char* argv[])
 {
 	const int FPS = 60;
