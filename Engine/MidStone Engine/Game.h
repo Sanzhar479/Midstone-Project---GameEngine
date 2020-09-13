@@ -14,10 +14,10 @@ public:
 	void init(const char* title, int width, int height, bool fullscreen);
 	void render();
 	void quit();
+	void fullScreen();
 
 	static SDL_Renderer* renderer;
 	static bool isRunning;
-
 
 private:
 

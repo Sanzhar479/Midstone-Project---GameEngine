@@ -45,3 +45,7 @@ void Game::quit() {
 				isRunning = false;
 		}
 }
+
+void Game::fullScreen() {
+
+}
