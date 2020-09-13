@@ -37,3 +37,11 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
 void Game::render()
 {
 }
+
+void Game::quit() {
+	while (SDL_PollEvent(&Events))
+		{
+			if (Events.type == SDL_QUIT)
+				isRunning = false;
+		}
+}

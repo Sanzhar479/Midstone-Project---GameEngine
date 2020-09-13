@@ -1,14 +1,13 @@
 #include "SDL.h"
 #include "Game.h"
 
-Game* game = nullptr;
 int main(int argc, char* argv[])
 {
 	const int FPS = 60;
 	const int frameDelay = 1000 / FPS;
 	Uint32 frameStart;
 	int frameTime;
-	game = new Game();
+	Game* game = new Game();
 
 	game->init("GameWindow", 800, 640, false);
 	
@@ -20,8 +19,8 @@ int main(int argc, char* argv[])
 		if (frameDelay > frameTime) {
 			SDL_Delay(frameDelay - frameTime);
 		}
-
+		game->quit();
 	}
-
+SDL_Quit();
 return 0;
 }
