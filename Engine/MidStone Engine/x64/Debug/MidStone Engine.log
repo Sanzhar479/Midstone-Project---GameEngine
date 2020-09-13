@@ -1,4 +1,6 @@
 ﻿  Game.cpp
   Main.cpp
+  Player.cpp
+  Vec2D.cpp
   Generating Code...
-  MidStone Engine.vcxproj -> D:\Projects\MidStone Engine\Engine\x64\Debug\MidStone Engine.exe
+  MidStone Engine.vcxproj -> C:\Users\Sanjayz\Documents\GitHub\Midstone-Project---GameEngine\Engine\x64\Debug\MidStone Engine.exe
