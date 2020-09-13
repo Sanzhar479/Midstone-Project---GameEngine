@@ -4,26 +4,19 @@
 #include <vector>
 #include <cmath>
 #include <string>
-#include "Vec2D.h"
+#include "Vec3.h"
 	class Player
 	{
 	public:
-		Vec2D position;
-		Vec2D velocity;
-		Vec2D gravitation;
-
-		int height = 13;
-		int width = 15;
-		int scale = 4;
-		int speed = 3;
-
+		Vec3 pos;
+		Vec3 vel;
+		Vec3 accel;
+		float mass;
 		Player();
+		Player(Vec3 pos_, Vec3 vel_, Vec3 accel_, float mass_);
 		~Player();
-		void PlayerStats(float x, float y, int h, int w, int sc);
-		void Update() 
-		{
-			position.x += static_cast<int>(velocity.x * speed);
-			position.y += static_cast<int>(velocity.y * speed);
-		}
-		
+		void Update(const float deltaTime);
+		void ApplyForce(Vec3 force);
+		Vec3 GetPos();
+
 	};
