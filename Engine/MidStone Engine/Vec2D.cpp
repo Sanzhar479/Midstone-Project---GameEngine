@@ -37,6 +37,12 @@ Vec2D& Vec2D::Divide(const Vec2D& vec)
 	this->y /= vec.y;
 	return *this;
 }
+Vec2D& Vec2D::Normalise() {
+	float Mag = sqrt(x * x + y * y);
+	this->x = x / Mag;
+	this->y = y / Mag;
+	return *this;
+}
 
 Vec2D& operator+(Vec2D& v1, const Vec2D& v2)
 {
@@ -76,13 +82,6 @@ Vec2D& Vec2D::operator*(const int& i)
 {
 	this->x *= i;
 	this->y *= i;
-	return *this;
-}
-
-Vec2D& Vec2D::Zero()
-{
-	this->x = 0;
-	this->y = 0;
 	return *this;
 }
 

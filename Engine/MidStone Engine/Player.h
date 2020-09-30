@@ -4,19 +4,20 @@
 #include <vector>
 #include <cmath>
 #include <string>
-#include "Vec3.h"
+#include "Vec2D.h"
 	class Player
 	{
 	public:
-		Vec3 pos;
-		Vec3 vel;
-		Vec3 accel;
-		float mass;
+		const Uint8* state = SDL_GetKeyboardState(NULL);
+		Vec2D pos;
+		float vel;
+		float xdir = 0.0f;
+		float ydir = 0.0f;
+		//Vec2D Dir;
 		Player();
-		Player(Vec3 pos_, Vec3 vel_, Vec3 accel_, float mass_);
+		Player(Vec2D pos_, float vel_);
 		~Player();
 		void Update(const float deltaTime);
-		void ApplyForce(Vec3 force);
-		Vec3 GetPos();
-
+		Vec2D GetPos();
+		Vec2D dir();
 	};

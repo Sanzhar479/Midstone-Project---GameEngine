@@ -1,13 +1,13 @@
 #include "Player.h"
 Player::Player() {
-
+	pos = Vec2D();
+	vel = 0.0f;
 }
 
-Player::Player(Vec3 pos_, Vec3 vel_, Vec3 accel_, float mass_) {
+Player::Player(Vec2D pos_, float vel_) {
 	pos = pos_;
 	vel = vel_;
-	accel = accel_;
-	mass = mass_;
+	dir() = Vec2D();
 }
 
 Player::~Player() {
@@ -15,21 +15,30 @@ Player::~Player() {
 }
 
 void Player::Update(const float deltaTime) {
-	//printf("%f %f\n", pos.y, vel.y);
-	pos.x += vel.x * deltaTime + 0.5f * accel.x * deltaTime * deltaTime;
-	vel.x += accel.x * deltaTime;
-	pos.y += vel.y * deltaTime + 0.5f * accel.y * deltaTime * deltaTime;
-	vel.y += accel.y * deltaTime;
-	pos.z += vel.z * deltaTime + 0.5f * accel.z * deltaTime * deltaTime;
-	vel.z += accel.z * deltaTime;
+	pos += dir() * vel * deltaTime;
+	printf("\n%f %f %f %f", pos.x, pos.y, dir().x, dir().y);
 }
 
-void Player::ApplyForce(Vec3 force) {
-	accel.x = force.x / mass;
-	accel.y = force.y / mass;
-	accel.z = force.z / mass;
+Vec2D Player::dir() {
+	if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_DOWN]) {
+		xdir = 0.0f;
+		ydir = 0.0f;
+		if (state[SDL_SCANCODE_LEFT])
+			xdir = -1.0f;
+		else
+			if (state[SDL_SCANCODE_RIGHT])
+				xdir = 1.0f;
+		if (state[SDL_SCANCODE_UP])
+			ydir = 1.0f;
+		else
+			if (state[SDL_SCANCODE_DOWN])
+				ydir = -1.0f;
+		return Vec2D(xdir, ydir).Normalise();
+	}
+	else
+		return Vec2D(xdir, ydir).Normalise();
 }
 
-Vec3 Player::GetPos() {
+Vec2D Player::GetPos() {
 	return pos;
 }
