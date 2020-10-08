@@ -1,32 +1,20 @@
-#include "SDL.h"
-#include "Game.h"
-#include "Player.h"
-#include <SDL.h>
-//#include <SDL_image.h>
+#include <iostream>
+#include "GameManager.h"
+#include "MMath.h"
+///#include <SDL.h>
+using namespace MATH;
 
-int main(int argc, char* argv[])
-{
-	//OnCreate
-	const int FPS = 60;
-	const int frameDelay = 1000 / FPS;
-	Uint32 frameStart;
-	int frameTime;
-	Game* game = new Game();
-	Player* player = new Player(Vec2D(1.0f, 1.0f), 5.0f);
-	game->init("GameWindow", 800, 640, false);
-	//Update
-    while (game->running())
-	{
-		player->Update(0.5);
-		frameStart = SDL_GetTicks();
+int main(int argc, char* args[]) { /// Standard C-style entry point, you need to use it
 
-		frameTime = SDL_GetTicks() - frameStart;
-		if (frameDelay > frameTime) {
-			SDL_Delay(frameDelay - frameTime);
-		}
-		game->quit();
+	GameManager *ptr = new GameManager();
+	bool status  = ptr->OnCreate();
+	if (status == true) {
+		ptr->Run();
+	} else if (status == false) {
+		/// You should have learned about stderr (std::cerr) in Operating Systems 
+		std::cerr << "Fatal error occured. Cannot start this program" << std::endl;
 	}
+	delete ptr;
+	return 0;
 
-SDL_Quit();
-return 0;
 }

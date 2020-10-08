@@ -4,21 +4,23 @@
 #include <vector>
 #include <cmath>
 #include <string>
-#include "Object.h"
-#include "Vec2D.h"
-	class Player : public Object
+#include "Vector.h"
+#include "VMath.h"
+using namespace MATH;
+	class Player
 	{
 	public:
 		const Uint8* state = SDL_GetKeyboardState(NULL);
-		Vec2D pos;
+		Vec3 pos;
 		float vel;
 		float xdir = 0.0f;
 		float ydir = 0.0f;
-		//Vec2D Dir;
+		SDL_Surface* image;
+		void Render(SDL_Window* window_);
 		Player();
-		Player(Vec2D pos_, float vel_);
+		Player(Vec3 pos_, float vel_, SDL_Surface* image_);
 		~Player();
 		void Update(const float deltaTime);
-		Vec2D GetPos();
-		Vec2D dir();
+		Vec3 GetPos();
+		Vec3 dir();
 	};

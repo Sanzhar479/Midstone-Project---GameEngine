@@ -1,6 +1,13 @@
-﻿  Game.cpp
+﻿  GameManager.cpp
   Main.cpp
+  MMath.cpp
   Player.cpp
-  Vec2D.cpp
+  Scene0.cpp
+  Timer.cpp
+  VMath.cpp
+  Window.cpp
   Generating Code...
-  MidStone Engine.vcxproj -> C:\Users\Sanjayz\Documents\GitHub\Midstone-Project---GameEngine\Engine\x64\Debug\MidStone Engine.exe
+GameManager.obj : error LNK2019: unresolved external symbol IMG_Init referenced in function "public: bool __cdecl GameManager::OnCreate(void)" (?OnCreate@GameManager@@QEAA_NXZ)
+GameManager.obj : error LNK2019: unresolved external symbol IMG_Quit referenced in function "public: void __cdecl GameManager::OnDestroy(void)" (?OnDestroy@GameManager@@QEAAXXZ)
+Scene0.obj : error LNK2019: unresolved external symbol IMG_Load referenced in function "public: virtual bool __cdecl Scene0::OnCreate(void)" (?OnCreate@Scene0@@UEAA_NXZ)
+D:\Midstone-Project---GameEngine\Engine\x64\Debug\MidStone Engine.exe : fatal error LNK1120: 3 unresolved externals
