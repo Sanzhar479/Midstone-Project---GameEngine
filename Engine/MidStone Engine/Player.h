@@ -4,8 +4,9 @@
 #include <vector>
 #include <cmath>
 #include <string>
+#include "Object.h"
 #include "Vec2D.h"
-	class Player
+	class Player : public Object
 	{
 	public:
 		const Uint8* state = SDL_GetKeyboardState(NULL);
