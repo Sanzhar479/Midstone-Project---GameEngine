@@ -11,7 +11,7 @@ Scene0::~Scene0() {
 bool Scene0::OnCreate() {
 	int w, h;
 	SDL_GetWindowSize(window, &w, &h);
-	player = new Player(Vec3(0.0f, 0.0f, 0.0f), 1.0f, IMG_Load("Sprites/still.png"));
+	player = new Player(Vec3(0.0f, 0.0f, 0.0f), 1.0f, IMG_Load("Sprites/still.png"), 10, 10);
 	if (player == nullptr || player->image == nullptr) {
 		return false;
 	}
@@ -27,6 +27,6 @@ void Scene0::Update(const float time) {
 void Scene0::Render() {
 	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
 	SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
-	player->Render(window, 10, 10);
+	player->Render(window);
 	SDL_UpdateWindowSurface(window);
 }
