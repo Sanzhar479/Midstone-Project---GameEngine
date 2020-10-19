@@ -16,7 +16,7 @@ using namespace MATH;
 		float xdir = 0.0f;
 		float ydir = 0.0f;
 		SDL_Surface* image;
-		void Render(SDL_Window* window_);
+		void Render(SDL_Window* window_, float sizeH, float sizeW);
 		Player();
 		Player(Vec3 pos_, float vel_, SDL_Surface* image_);
 		~Player();

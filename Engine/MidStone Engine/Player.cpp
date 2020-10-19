@@ -22,8 +22,10 @@ void Player::Update(const float deltaTime) {
 	printf("\n%f %f %f %f", pos.x, pos.y, dir().x, dir().y);
 }
 //drawing an image on screen
-void Player::Render(SDL_Window* window_) {
+void Player::Render(SDL_Window* window_, float sizeH, float sizeW) {
 	SDL_Rect dst;
+	dst.w = sizeW;
+	dst.h = sizeH;
 	dst.x = static_cast<int>(pos.x);
 	dst.y = static_cast<int>(pos.y);
 	SDL_Surface* screenSurface = SDL_GetWindowSurface(window_);
