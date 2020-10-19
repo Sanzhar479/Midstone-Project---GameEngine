@@ -1,0 +1,34 @@
+
+*.tlog
+Engine/.vs/MidStone Engine/v16/.suo
+Engine/.vs/MidStone Engine/v16/.suo
+Engine/.vs/MidStone Engine/v16/Browse.VC.db
+*.db-shm
+*.db-wal
+*.ipch
+*.ipch
+*.ilk
+*.exe
+*.log
+*.obj
+*.recipe
+*.opendb
+*.ipch
+*.db
+*.db
+*.ipch
+*.ipch
+*.pdb
+*.ipch
+*.dll
+*.idb
+*.txt
+*.vcxproj
+*.filters
+*.user
+*.dll
+*.obj
+*.obj
+*.log
+*.log
+*.tlog
