@@ -14,17 +14,26 @@ private:
 	/// If that was too much for your brain, just #include "Window.h" and declear
 	/// Window *ptr and don't use the word "class"  This is a second semester C++
 	/// topic anyway
-	class Window *ptr;
-	class Timer *timer;
+	class Window* ptr;
+	class Timer* timer;
 	bool isRunning;
-	Scene *currentScene;
-
+	Scene* currentScene;
+	enum SCENE_NUMBER {
+		SCENE0 = 0,
+		SCENE1 = 1,
+		SCENE2,
+		SCENE3,
+		SCENE4,
+		SCENE5,
+		SCENE6
+	};
 public:
 	GameManager();
 	~GameManager();
 	bool OnCreate();
+	void BuildScene(SCENE_NUMBER scene);
 	void OnDestroy();
-
+	void HandleEvents(SDL_Event& sdlEvent);
 	void Run();
 };
 #endif
