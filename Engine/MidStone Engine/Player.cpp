@@ -1,12 +1,14 @@
 #include "Player.h"
 Player::Player() : Object() {
 	vel = 0.0f;
+	health = 0;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
 }
 
-Player::Player(float vel_) : Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28) {
+Player::Player(float vel_, int health_) : Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28) {
 	vel = vel_;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
+	health = health_;
 }
 
 Player::~Player() {
@@ -38,15 +40,17 @@ void Player::Control(const float deltaTime) {
 	}
 	Update(deltaTime);
 }
-void Player::Block(Object object) {
+void Player::Block(Object* object) {
 	if (CollisionDetected(object) == true) {
-		if ((dir.x > 0 && pos.x + sizeW >= object.pos.x) || (dir.x < 0 && pos.x <= object.pos.x + object.sizeW))
+		if ((dir.x > 0 && pos.x + sizeW >= object->pos.x) || (dir.x < 0 && pos.x <= object->pos.x + object->sizeW))
 			dir.x = 0;
-		if ((dir.y > 0 && pos.y >= object.pos.y - object.sizeH) || (dir.y < 0 && pos.y - sizeH <= object.pos.y))
+		if ((dir.y > 0 && pos.y >= object->pos.y - object->sizeH) || (dir.y < 0 && pos.y - sizeH <= object->pos.y))
 			dir.y = 0;
 	}
 }
 
-void Player::Death(Object object) {
-
+void Player::Death(Player* player) {
+	if (health <= 0)
+		player;
 }
+

@@ -21,6 +21,6 @@ public:
 	Object(Vec3 pos_, SDL_Surface* image_, int sizeH_, int sizeW_);
 	~Object();
 	Vec3 GetPos();
-	bool CollisionDetected(Object object_);
+	bool CollisionDetected(Object* object_);
 };
 

@@ -25,9 +25,9 @@ void Object::Render(SDL_Window* window_, Matrix4 projection) {
 	SDL_Surface* screenSurface = SDL_GetWindowSurface(window_);
 	SDL_BlitSurface(image, nullptr, screenSurface, &dst);
 }
-bool Object::CollisionDetected(Object object_) {
-	if ((abs(pos.x - object_.pos.x) < sizeW + object_.sizeW) &&
-		(abs(pos.y - object_.pos.y) < sizeH + object_.sizeH))
+bool Object::CollisionDetected(Object* object_) {
+	if ((abs(pos.x - object_->pos.x) < sizeW + object_->sizeW) &&
+		(abs(pos.y - object_->pos.y) < sizeH + object_->sizeH))
 		return true;
 	else return false;
 }
