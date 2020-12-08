@@ -2,11 +2,9 @@
 Enemies::Enemies() : Object() {
 	vel = 0.0f;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
-	spawner = new Spawner();
 }
-Enemies::Enemies(float vel_, Spawner* spawner_) : Object(spawner->Rand(), IMG_Load("Sprites/still.png"), 62, 28) {
+Enemies::Enemies(float vel_)/* : Object(Vec3(800.0f, 400.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28)*/ {
 	vel = vel_;
-	spawner = spawner_;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
 }
 void Enemies::Damage(Player* player) {

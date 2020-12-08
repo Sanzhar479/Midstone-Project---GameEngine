@@ -38,6 +38,7 @@ void Player::Control(const float deltaTime) {
 				dir.y = -1.0f;
 			}
 	}
+	else dir = Vec3(0.0f, 0.0f, 0.0f);
 	Update(deltaTime);
 }
 void Player::Block(Object* object) {

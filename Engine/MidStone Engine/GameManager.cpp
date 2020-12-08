@@ -26,7 +26,6 @@ bool GameManager::OnCreate() {
 		return false;
 	}
 
-
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 400;
 	ptr = new Window(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -63,19 +62,40 @@ bool GameManager::OnCreate() {
 /// Here's the whole game
 void GameManager::Run() {
 	timer->Start();
+	SDL_Event sdlEvent;
+	SDL_Event e;
 	while (isRunning) {
+		/*while (SDL_PollEvent(&sdlEvent)) {
+			if (sdlEvent.type == SDL_QUIT) {
+				isRunning = false;
+			}
+		}*/
+		HandleEvents(sdlEvent);
+		SDL_PollEvent(&e);
+		if (e.type == SDL_QUIT) {
+			break;
+		}
 		timer->UpdateFrameTicks();
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
 
 		/// Keeep the event loop running at a proper rate
 		SDL_Delay(timer->GetSleepTime(60)); ///60 frames per sec
+
+	}
+}
+void GameManager::HandleEvents(SDL_Event& sdlEvent) {
+	while (SDL_PollEvent(&sdlEvent)) {
+		if (sdlEvent.type == SDL_QUIT) {
+			isRunning = false;
+		}
 	}
 }
 
+
 GameManager::~GameManager() {}
 
-void GameManager::OnDestroy(){
+void GameManager::OnDestroy() {
 	if (ptr) delete ptr;
 	if (timer) delete timer;
 	if (currentScene) delete currentScene;
