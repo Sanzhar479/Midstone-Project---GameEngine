@@ -6,12 +6,14 @@ using namespace MATH;
 	public:
 		const Uint8* state = SDL_GetKeyboardState(NULL);
 		float vel;
+		bool blockedx = false;
+		bool blockedy = false;
 		int health;
 		Player();
 		Player(float vel_, int health_);
 		~Player();
 		void Update(const float deltaTime);
-		void Control(const float deltaTime);
+		void Control();
 		Vec3 dir;
 		void Block(Object* object);
 		void Death(Player* player);

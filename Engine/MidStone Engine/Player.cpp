@@ -16,38 +16,39 @@ Player::~Player() {
 }
 //movement
 void Player::Update(const float deltaTime) {
-	pos += dir * vel * deltaTime;
-	printf("\n%f %f %f %f", pos.x, pos.y, dir.x, dir.y);
-}
-void Player::Control(const float deltaTime) {
-	if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_DOWN] || 
-		state[SDL_SCANCODE_A] || state[SDL_SCANCODE_D] || state[SDL_SCANCODE_W] || state[SDL_SCANCODE_S]) {
+	if ((dir.x < 0 && pos.x <= 0) || (dir.x > 0 && pos.x >= 800 - sizeW) || (dir.y < 0 && pos.y - sizeH <= 0) || (dir.y > 0 && pos.y >= 400) || (blockedx == true)|| (blockedy == true))
 		dir = Vec3(0.0f, 0.0f, 0.0f);
-		if (state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_D]) {
+	pos += dir * vel * deltaTime;
+}
+void Player::Control() {
+	if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_A] || state[SDL_SCANCODE_D] || state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_W] || state[SDL_SCANCODE_S]) {
+		dir = Vec3(0.0f, 0.0f, 0.0f);
+		if ((state[SDL_SCANCODE_RIGHT] || state[SDL_SCANCODE_D])) {
 			dir.x = 1.0f;
 		}
 		else
-			if (state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_A]) {
+			if ((state[SDL_SCANCODE_LEFT] || state[SDL_SCANCODE_A])) {
 				dir.x = -1.0f;
 			}
-		if (state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_W]) {
+		if ((state[SDL_SCANCODE_UP] || state[SDL_SCANCODE_W])) {
 			dir.y = 1.0f;
 		}
 		else
-			if (state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_S]) {
+			if ((state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_S])) {
 				dir.y = -1.0f;
 			}
 	}
 	else dir = Vec3(0.0f, 0.0f, 0.0f);
-	Update(deltaTime);
 }
 void Player::Block(Object* object) {
-	if (CollisionDetected(object) == true) {
-		if ((dir.x > 0 && pos.x + sizeW >= object->pos.x) || (dir.x < 0 && pos.x <= object->pos.x + object->sizeW))
-			dir.x = 0;
-		if ((dir.y > 0 && pos.y >= object->pos.y - object->sizeH) || (dir.y < 0 && pos.y - sizeH <= object->pos.y))
-			dir.y = 0;
+	if ((CollisionDetected(object) == true) && ((dir.x > 0.0f && pos.x >= object->pos.x - sizeW && pos.x <= object->pos.x) || (dir.x < 0.0f && pos.x <= object->pos.x - sizeW && pos.x >= object->pos.x)))
+		blockedx = true;
+	else blockedx = false;
+	if ((CollisionDetected(object) == true) && ((dir.y > 0.0f && pos.y >= object->pos.y - object->sizeH && pos.y <= object->pos.y) || (dir.y < 0.0f && pos.y <= object->pos.y - sizeH && pos.y >= object->pos.y))) {
+		blockedy = true;
+		printf("c");
 	}
+	else blockedy = false;
 }
 
 void Player::Death(Player* player) {

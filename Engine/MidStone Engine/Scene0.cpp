@@ -24,9 +24,12 @@ bool Scene0::OnCreate() {
 void Scene0::OnDestroy() {}
 
 void Scene0::Update(const float time) {
-	player->Control(time);
-	enemies->AIChasing(player);
+	player->Control();
+	player->Block(wall);
+	enemies->AIChasing(player);	
+	player->Update(time);
 	enemies->Update(time);
+
 }
 
 void Scene0::Render() {

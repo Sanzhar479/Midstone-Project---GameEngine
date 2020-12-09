@@ -5,9 +5,9 @@ Object::Object() {
 	sizeH = 0;
 	sizeW = 0;
 }
-Object::Object(Vec3 pos_, SDL_Surface* image_, int sizeW_, int sizeH_) {
+Object::Object(Vec3 pos_, SDL_Surface* image_, int sizeH_, int sizeW_) {
 	sizeW = sizeW_;
-	sizeH = sizeW_;
+	sizeH = sizeH_;
 	pos.x = pos_.x;
 	pos.y = pos_.y + sizeH;
 	image = image_;

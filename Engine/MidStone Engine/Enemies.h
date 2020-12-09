@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Player.h"
-
+#include "Spawner.h"
 class Enemies : public Object
 {
 public:
@@ -11,7 +11,7 @@ public:
 	void AIChasing(Player* player);
 	void Damage(Player* player);
 	Enemies();
-	Enemies(float vel_);
+	Enemies(float vel_, Spawner* spawner);
 	~Enemies();
 };
 
