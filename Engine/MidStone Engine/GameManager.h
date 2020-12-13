@@ -2,7 +2,8 @@
 #define GAMEMANAGER_H
 #include <SDL.h>
 #include "Scene.h"
-
+#include "Scene0.h"
+#include "Scene2.h"
 class GameManager {
 private:
 	/// These are called "forward declarations" The idea is that a pointer is 
@@ -17,6 +18,7 @@ private:
 	class Window* ptr;
 	class Timer* timer;
 	bool isRunning;
+	//Scene0* mainScene;
 	Scene* currentScene;
 	enum SCENE_NUMBER {
 		SCENE0 = 0,

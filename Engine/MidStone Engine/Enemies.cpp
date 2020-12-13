@@ -3,17 +3,20 @@ Enemies::Enemies() : Object() {
 	vel = 0.0f;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
 }
-Enemies::Enemies(float vel_, Spawner* spawner)/* : Object(Vec3(800.0f, 400.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28)*/ {
+Enemies::Enemies(float vel_, Spawner* spawner) {
 	vel = vel_;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
-	image = IMG_Load("Sprites/still.png");
-	sizeH = 62;
-	sizeW = 28;
+	image = IMG_Load("Sprites/enemy.png");
+	sizeH = 64;
+	sizeW = 64;
 	pos = spawner->Rand();
 }
-void Enemies::Damage(Player* player) {
-	if (CollisionDetected(player) == true)
+bool Enemies::Damage(Player* player) {
+	if (CollisionDetected(player) == true) {
 		player->health--;
+		return true;
+	}
+	return false;
 }
 void Enemies::AIChasing(Player* player) {
 	dir = player->pos - pos;
