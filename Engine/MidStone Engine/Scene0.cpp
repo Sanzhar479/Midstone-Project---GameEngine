@@ -14,6 +14,7 @@ bool Scene0::OnCreate() {
 	Matrix4 ndc = MMath::viewportNDC(w, h);
 	Matrix4 ortho = MMath::orthographic(0.0, 800.0, 0.0, 400.0, 0.0, 1.0);
 	projection = ndc * ortho;
+	enemies->pos = spawner->Rand();
 	if (player == nullptr || player->image == nullptr) {
 		return false;
 	}
@@ -25,7 +26,10 @@ void Scene0::OnDestroy() {}
 void Scene0::Update(const float time) {
 	player->Control();
 	player->Block(wall);
+	enemies->AIChasing(player);	
 	player->Update(time);
+	enemies->Update(time);
+
 }
 
 void Scene0::Render() {
@@ -33,5 +37,6 @@ void Scene0::Render() {
 	SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0xff, 0xff, 0xff));
 	backGround->Render(window, projection);
 	player->Render(window, projection);
+	enemies->Render(window, projection);
 	SDL_UpdateWindowSurface(window);
 }

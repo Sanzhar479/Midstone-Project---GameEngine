@@ -11,7 +11,7 @@ using namespace std;
 class Spawner
 {
 public:
-	int lastNum[3] = { 0, 0 , 0 };
+
 	Vec3 pos[6] = {
 		Vec3(-100.0f, -100.0f, 0.0f),
 		Vec3(400.0f, -100.0f, 0.0f),

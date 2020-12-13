@@ -2,7 +2,6 @@
 #include "Window.h"
 #include "Timer.h"
 #include "Scene0.h"
-#include "Scene1.h"
 #include <SDL_image.h>
 #include <iostream>
 
@@ -10,7 +9,6 @@ GameManager::GameManager() {
 	timer = nullptr;
 	isRunning = true;
 	currentScene = nullptr;
-	//mainScene = nullptr;
 }
 
 
@@ -31,7 +29,6 @@ bool GameManager::OnCreate() {
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 400;
 	ptr = new Window(SCREEN_WIDTH, SCREEN_HEIGHT);
-
 	if (ptr == nullptr) {
 		OnDestroy();
 		return false;
@@ -49,8 +46,6 @@ bool GameManager::OnCreate() {
 
 
 	currentScene = new Scene0(ptr->GetSDL_Window());
-	//currentScene = new Scene2(ptr->GetSDL_Window());
-	//mainScene = new Scene0(ptr->GetSDL_Window());
 	if (currentScene == nullptr) {
 		OnDestroy();
 		return false;
@@ -69,14 +64,12 @@ void GameManager::Run() {
 	timer->Start();
 	SDL_Event sdlEvent;
 	SDL_Event e;
-
 	while (isRunning) {
 		/*while (SDL_PollEvent(&sdlEvent)) {
 			if (sdlEvent.type == SDL_QUIT) {
 				isRunning = false;
 			}
-		}*/ 
-		
+		}*/
 		HandleEvents(sdlEvent);
 		SDL_PollEvent(&e);
 		if (e.type == SDL_QUIT) {
@@ -88,10 +81,7 @@ void GameManager::Run() {
 
 		/// Keeep the event loop running at a proper rate
 		SDL_Delay(timer->GetSleepTime(60)); ///60 frames per sec
-		//if (mainScene->dead == true) {
-		//	printf("die");
-		//	currentScene = new Scene1(ptr->GetSDL_Window());
-		//}
+
 	}
 }
 void GameManager::HandleEvents(SDL_Event& sdlEvent) {

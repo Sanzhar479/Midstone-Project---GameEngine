@@ -2,15 +2,13 @@
 Player::Player() : Object() {
 	vel = 0.0f;
 	health = 0;
-	score = 0;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
 }
 
-Player::Player(float vel_, int health_, int score_) : Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28) {
+Player::Player(float vel_, int health_) : Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/still.png"), 62, 28) {
 	vel = vel_;
 	dir = Vec3(0.0f, 0.0f, 0.0f);
 	health = health_;
-	score = score_;
 }
 
 Player::~Player() {
@@ -53,11 +51,8 @@ void Player::Block(Object* object) {
 	else blockedy = false;
 }
 
-bool Player::Death() {
-	if (health < 0) {
-		pos = Vec3(-1000.0f, -1000.0f, 0.0f);
-		return true;
-	}
-	return false;
+void Player::Death(Player* player) {
+	if (health <= 0)
+		player;
 }
 
