@@ -8,12 +8,15 @@
 
 class Scene2 : public Scene {
 private:
+	//adding background and gameover screen
 	Object* backGround = new Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/back.png"), 400, 800);
 	Object* gameOver = new Object(Vec3(0.0f, 0.0f, 0.0f), IMG_Load("Sprites/GameOver.png"), 400, 800);
-	//Object* wall = new Object(Vec3(0.0f, 250.0f, 0.0f), NULL, 150, 800);
+	//adding random spawner with default settings
 	Spawner* spawner = new Spawner();
+	//adding 5 enemies
 	Enemies* enemies[5];
 	SDL_Window* window;
+	//velocity: 100, health: 3, score: 5
 	Player* player = new Player(100.0f, 3, 5);
 	Matrix4 projection;
 

@@ -47,10 +47,9 @@ bool GameManager::OnCreate() {
 		return false;
 	}
 
-
+	//switching scenes
 	currentScene = new Scene0(ptr->GetSDL_Window());
 	//currentScene = new Scene2(ptr->GetSDL_Window());
-	//mainScene = new Scene0(ptr->GetSDL_Window());
 	if (currentScene == nullptr) {
 		OnDestroy();
 		return false;
@@ -88,10 +87,6 @@ void GameManager::Run() {
 
 		/// Keeep the event loop running at a proper rate
 		SDL_Delay(timer->GetSleepTime(60)); ///60 frames per sec
-		//if (mainScene->dead == true) {
-		//	printf("die");
-		//	currentScene = new Scene1(ptr->GetSDL_Window());
-		//}
 	}
 }
 void GameManager::HandleEvents(SDL_Event& sdlEvent) {
