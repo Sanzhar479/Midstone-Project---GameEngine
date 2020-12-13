@@ -32,3 +32,6 @@ Engine/.vs/MidStone Engine/v16/Browse.VC.db
 *.log
 *.log
 *.tlog
+Engine/MidStone Engine/MidStone Engine.vcxproj
+Engine/.vs/MidStone Engine/v15/.suo
+Engine/MidStone Engine/MidStone Engine.vcxproj
